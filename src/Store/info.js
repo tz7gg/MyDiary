@@ -10,25 +10,25 @@ class info {
     getTitle() {
         return this._title
     }
-    setTitle(text) {
-        this._title = text
-    }
-
-    getErrorText() {
-        return this._errorMSG
-    }
 
     init() {
-        fetch('https://jsonplaceholder.typicode.com/todos/1')
-            .then(response => {
-                if (response.ok) {
-                    return response.json().then(json => {
-                        return this.setTitle(json.title)
-                    })
-                } else {
-                    this.setTitle(this._errorMSG)
-                }
+        fetch('http://localhost:5000/info', {
+                // headers: {
+                //     'Accept': 'application/json',
+                //     'Content-Type': 'application/json'
+                // },
+                // method: "POST",
+                // body: JSON.stringify({
+                //     "addd": "adadada"
+                // })
             })
+            .then(response => response.json())
+            .then(json => {
+                this._title = json.title
+            })
+            .catch((e) => {
+                this._title = this._errorMSG
+            });
     }
 }
 

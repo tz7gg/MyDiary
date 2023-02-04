@@ -1,11 +1,11 @@
+import React, {useEffect } from "react";
 import "./App.css"
 import MainScreen from "./Components/MainScreen/MainScreen"
 import info from "./Store/info";
 
-const App = () => {
-  
-  info.init()
+info.init()
 
+const App = () => {
   return (
     <div>
       <MainScreen/>
