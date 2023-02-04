@@ -1,0 +1,14 @@
+h1 {
+    font-size: 48px;
+    line-height: 120%;
+    padding-bottom: 16px;
+    padding-top: 36px;
+}
+
+.center {
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}
