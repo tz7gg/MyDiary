@@ -1,9 +1,8 @@
-import React, {useEffect } from "react";
 import "./App.css"
 import MainScreen from "./Components/MainScreen/MainScreen"
-import info from "./Store/info";
+import State from "./Store/State";
 
-info.init()
+State.getInfo()
 
 const App = () => {
   return (

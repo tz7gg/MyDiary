@@ -7,24 +7,26 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'root',
-    database: 'diary'
-});
-
-connection.connect();
-
 app.get('/info', cors(), (req, res) => {
     // console.log(req.body);
     getInfo(res)
 })
 
+const dbconnect = {
+    host: 'localhost',
+    user: 'root',
+    password: 'root',
+    database: 'diary'
+}
+
 app.listen(PORT)
 
 function getInfo(callback) {
-    connection.query('SELECT * FROM `info`', function(err, rows, fields) {
+    const connection = mysql.createConnection({
+        ...dbconnect
+    });
+    connection.connect();
+    connection.query('SELECT * FROM `info`', function(err, rows) {
         if (err) throw err;
         let data = {}
         rows.forEach((element) => {
@@ -32,4 +34,5 @@ function getInfo(callback) {
         });
         callback.status(200).json(data)
     });
+    connection.end()
 }
