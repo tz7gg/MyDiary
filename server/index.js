@@ -8,8 +8,19 @@ app.use(express.json())
 app.use(cors())
 
 app.get('/info', cors(), (req, res) => {
-    // console.log(req.body);
     getInfo(res)
+
+})
+
+app.post('/todo', cors(), (req, res) => {
+
+    const date = req.body.data.date
+    const text = req.body.data.text
+    const type = req.body.data.type
+
+    if (req.body.data.text) {
+        setTodo(date, text, type, res)
+    }
 })
 
 const dbconnect = {
@@ -34,5 +45,20 @@ function getInfo(callback) {
         });
         callback.status(200).json(data)
     });
-    connection.end()
+
+}
+
+function setTodo(date, text, type, callback) {
+
+    const connection = mysql.createConnection({
+        ...dbconnect
+    });
+    connection.connect(function(err) {
+        if (err) throw err;
+        var sql = `INSERT INTO todo (id, date, text, type, progress) VALUES (NULL, '${date}', '${text}', '${type}', '')`;
+        connection.query(sql, function(err, result) {
+            if (err) throw err;
+            callback.status(200).json(true)
+        });
+    });
 }

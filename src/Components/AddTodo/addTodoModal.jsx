@@ -1,8 +1,10 @@
+import { observer } from "mobx-react-lite"
 import { useState } from "react"
+import API from "../../API/API"
 import State from "../../Store/State"
 import style from "./modal.module.css"
 
-const AddTodoModal = () => {
+const AddTodoModal = observer(() => {
 
 	const [textarea, setTextArea] = useState('')
 	const [type, setType] = useState('Не выбрано')
@@ -12,10 +14,11 @@ const AddTodoModal = () => {
 		State.setAddTodoModal(false)		
 	}
 
-	const create = () => {
+	const  create = async () => {
 		if(textarea) {
-			console.log(textarea)
-			console.log(type)
+			State.setSpinner(true)
+			await API.setTodo(State.getCurrentDate(), textarea, type)
+			State.setSpinner(false)
 		} else {
 			setError(true)
 		}		
@@ -41,6 +44,6 @@ const AddTodoModal = () => {
 			</div>
 		</div>
 	)
-}
+})
 
 export default AddTodoModal
