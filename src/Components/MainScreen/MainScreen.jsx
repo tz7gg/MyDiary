@@ -19,7 +19,6 @@ const MainScreen = observer(() => {
 					<AddTodoBtn/>
 				</div>				
 			</div>
-			
 		</div>
 	)
 })

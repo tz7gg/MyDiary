@@ -7,6 +7,7 @@ class State {
     _selectedDate = this._currentDate
     _addToodBtnText = ''
     _spinner = true
+    _addTodoModal = false
 
     constructor() {
         makeAutoObservable(this)
@@ -37,6 +38,14 @@ class State {
 
     setSpinner(bool) {
         this._spinner = bool
+    }
+
+    getAddTodoModal() {
+        return this._addTodoModal
+    }
+
+    setAddTodoModal(bool) {
+        this._addTodoModal = bool
     }
 
     async getInfo() {

@@ -4,7 +4,7 @@ import style from "./btn.module.css"
 const AddTodoBtn = () => {
 
 	const addHandler = () => {
-		console.log('MODAL')
+		State.setAddTodoModal(true)
 	}
 
 	return (
