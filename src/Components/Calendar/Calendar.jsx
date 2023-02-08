@@ -5,12 +5,14 @@ import ru from 'date-fns/locale/ru';
 registerLocale('ru', ru)
 
 import "react-datepicker/dist/react-datepicker.css";
+import State from "../../Store/State";
 
 const Calendar = () => {
-	const [startDate, setStartDate] = useState(new Date());
+	const [startDate, setStartDate] = useState(State.getCurrentDate());
 
-	const changeHandler = () => {
+	const changeHandler = (date) => {
 		(date) => setStartDate(date)
+		State.setSelectedDate(date)
 	}
 
 	return (

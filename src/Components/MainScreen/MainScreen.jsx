@@ -3,7 +3,9 @@ import State from "../../Store/State"
 import Title from "../Typography/Title/Title";
 import style from "./style.module.css"
 import { observer } from "mobx-react-lite";
-import Calendar from "../Calendar";
+import Calendar from "../Calendar/Calendar";
+
+import AddTodoBtn from "../AddTodo/AddTodoBtn";
 
 const MainScreen = observer(() => {		
 	return (
@@ -13,6 +15,9 @@ const MainScreen = observer(() => {
 			</div>
 			<div className={style.calendar}>
 				<Calendar/>
+				<div className={style.todoList}>
+					<AddTodoBtn/>
+				</div>				
 			</div>
 			
 		</div>

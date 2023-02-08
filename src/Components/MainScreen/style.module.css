@@ -1,7 +1,12 @@
 .container {
-    margin-top: 60px;
+    padding-top: 60px;
 }
 
 .calendar {
     padding-top: 56px;
+    display: flex;
+}
+
+.todoList {
+    margin-left: 48px;
 }
