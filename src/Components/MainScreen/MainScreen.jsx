@@ -6,6 +6,7 @@ import { observer } from "mobx-react-lite";
 import Calendar from "../Calendar/Calendar";
 
 import AddTodoBtn from "../AddTodo/AddTodoBtn";
+import TodoList from "../TodoLIst/TodoLIst";
 
 const MainScreen = observer(() => {		
 	return (
@@ -16,6 +17,7 @@ const MainScreen = observer(() => {
 			<div className={style.calendar}>
 				<Calendar/>
 				<div className={style.todoList}>
+					<TodoList/>
 					<AddTodoBtn/>
 				</div>				
 			</div>

@@ -1,0 +1,37 @@
+.wrap {
+    width: 100%;
+}
+
+.todoItem {
+    margin-bottom: 16px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 12px;
+    padding-right: 8px;
+    border: 1px solid black;
+    position: relative;
+    border-radius: 5px;
+}
+
+.todoItemType {
+    width: 100%;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding-bottom: 8px;
+}
+
+.todoItemText {
+    padding-right: 36px;
+}
+
+.todoItemDel {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+}
+
+.todoItemDel img {
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+}

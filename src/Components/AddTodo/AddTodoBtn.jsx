@@ -2,13 +2,8 @@ import State from "../../Store/State"
 import style from "./btn.module.css"
 
 const AddTodoBtn = () => {
-
-	const addHandler = () => {
-		State.setAddTodoModal(true)
-	}
-
 	return (
-		<div className={style.btn} onClick= {() => addHandler()}>
+		<div className={style.btn} onClick= {() => State.setAddTodoModal(true)}>
 			{State.getAddToodBtnText()}
 		</div>
 	)

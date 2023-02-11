@@ -8,6 +8,7 @@ class State {
     _addToodBtnText = ''
     _spinner = true
     _addTodoModal = false
+    _todoList = []
 
     constructor() {
         makeAutoObservable(this)
@@ -48,6 +49,10 @@ class State {
         this._addTodoModal = bool
     }
 
+    getTodos() {
+        return this._todoList
+    }
+
     async getInfo() {
         let data = await API.info()
         if (data.title) {
@@ -57,6 +62,10 @@ class State {
             this._title = data
         }
         this._spinner = false
+    }
+    async fetchTodos() {
+        let todos = await API.getTodos()
+        this._todoList = todos
     }
 }
 

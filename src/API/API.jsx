@@ -24,11 +24,12 @@ class API {
             });
 		}
 
-        async setTodo(date, text, type) {
+        async setTodo(date, text, type, progress) {
             const data = {
                 date: date,
                 text: text,
-                type: type
+                type: type,
+                progress: progress
             }
             return await fetch(`${this._URL}${this._todoURL}`, {
                 headers: {
@@ -38,6 +39,37 @@ class API {
                 method: "POST",
                 body: JSON.stringify({
                     data
+                })
+            })
+            .then(response => response.json())
+            .then(json => {
+                return json
+            })
+            .catch(() => {
+                return this._errMSG
+            });
+        }
+        async getTodos() {
+            return await fetch(`${this._URL}${this._todoURL}`, {
+
+            })
+            .then(response => response.json())
+            .then(json => {
+                return json
+            })
+            .catch(() => {
+                return this._errMSG
+            });
+        }
+        async delTodo(id) {
+            return await fetch(`${this._URL}${this._todoURL}`, {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                method: "DELETE",
+                body: JSON.stringify({
+                    "id": id
                 })
             })
             .then(response => response.json())
