@@ -1,6 +1,7 @@
 import { observer } from "mobx-react-lite";
 import { useState } from "react";
 import API from "../../API/API";
+import formatedDate from "../../common/formatedDate";
 import State from "../../Store/State";
 import style from "./modal.module.css";
 
@@ -12,8 +13,8 @@ const AddTodoModal = observer(() => {
   const create = async () => {
     if (textarea) {
       State.setSpinner(true);
-      await API.setTodo(State.getCurrentDate(), textarea, type, "inProgress");
-      await State.fetchTodos();
+      await API.setTodo(formatedDate(State.getSelectedDate()), textarea, type, "inProgress");
+      await State.fetchTodos(formatedDate(State.getSelectedDate()));
       State.setSpinner(false);
       State.setAddTodoModal(false);
     } else {

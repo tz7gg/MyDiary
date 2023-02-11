@@ -6,13 +6,17 @@ registerLocale('ru', ru)
 
 import "react-datepicker/dist/react-datepicker.css";
 import State from "../../Store/State";
+import formatedDate from "../../common/formatedDate";
 
 const Calendar = () => {
 	const [startDate, setStartDate] = useState(State.getCurrentDate());
 
-	const changeHandler = (date) => {
+	const changeHandler = async (date) => {		
 		(date) => setStartDate(date)
-		State.setSelectedDate(date)
+		State.setSpinner(true)
+		State.setSelectedDate(formatedDate(date))
+		await State.fetchTodos(formatedDate(State.getSelectedDate() ))
+		State.setSpinner(false)
 	}
 
 	return (
