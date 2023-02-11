@@ -4,7 +4,6 @@ function formatedDate(date) {
     } else {
         return date
     }
-
 }
 
 export default formatedDate
