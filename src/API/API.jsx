@@ -2,6 +2,7 @@ class API {
   _URL = "http://localhost:5000/";
   _infoURL = "info";
   _todoURL = "todo";
+  _userURL = "user"
   _errMSG = "что-то пошло не так";
   async info() {
     return await fetch(`${this._URL}${this._infoURL}`, {})
@@ -57,6 +58,29 @@ class API {
       method: "DELETE",
       body: JSON.stringify({
         id: id,
+      }),
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        return json;
+      })
+      .catch(() => {
+        return this._errMSG;
+      });
+  }
+  async createUser(login, password) {
+    const data = {
+      login: login,
+      password: password
+    };
+    return await fetch(`${this._URL}${this._userURL}`, {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify({
+        data,
       }),
     })
       .then((response) => response.json())

@@ -17,6 +17,7 @@ const AddTodoModal = observer(() => {
       await State.fetchTodos(formatedDate(State.getSelectedDate()));
       State.setSpinner(false);
       State.setAddTodoModal(false);
+       console.log(await API.createUser('volodya', 'pass'))
     } else {
       setError(true);
     }
